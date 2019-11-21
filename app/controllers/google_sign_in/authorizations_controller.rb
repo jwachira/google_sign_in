@@ -1,7 +1,7 @@
 require 'securerandom'
 
 class GoogleSignIn::AuthorizationsController < GoogleSignIn::BaseController
-  skip_forgery_protection only: :create
+  protect_from_forgery except: [:create]
 
   def create
     redirect_to login_url(scope: 'openid profile email', state: state),
